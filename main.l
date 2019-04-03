@@ -1,15 +1,12 @@
-
 %{
 #include <stdlib.h>
 void yyerror(char *);
 
 #include "y.tab.h"
-
 %}
 
 
 %%
-
 "[" {
           return ABRE2;
         }
@@ -27,7 +24,7 @@ void yyerror(char *);
         }
 
 [a-zA-Z][a-zA-Z0-9 ]* {
-          return NOM;
+          return NOME;
         }
 
 ["]     {
@@ -35,24 +32,24 @@ void yyerror(char *);
         }
 
 [0-9]+.[0-9]+ {
-          return NUMER;
+          return NUMERO;
         }
 
 [0-9]+  {
-          return NUMER;
+          return NUMERO;
         }
 
 [:]     {
           return DOISPONTOS;
         }
 
-[;,]     {
+[,]     {
           return VIRGULA;
         }
 
 [ \t\n]+ ;
 
-.     {yyerror("INVALIDO\n");}
+.     {yyerror("INVALIDO");}
 
 %%
 
